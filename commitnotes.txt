@@ -1,0 +1,10 @@
+git init
+git add . 
+git commit -m "name"
+git status , check it 
+git remote add origin https link 
+git push origin master
+
+
+it could be master or origin 
+    use git status to check after status add .

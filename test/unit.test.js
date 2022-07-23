@@ -17,7 +17,7 @@ const { developmentChains, networkConfig } = require("../helper-hardhat-config")
               deployer = (await getNamedAccounts()).deployer
               await deployments.fixture(["all"]) //dploy all contracts including
               //mock and raffle
-              raffle = await ethers.getContract("Raffle", deployer) //deploy the contract with deployer as the deployer
+              raffle = await ethers.getContract("Raffle", deployer) //deploy the contract with deployer as the wallet that deployed the deployer
               VRFCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer)
               entranceFee = await raffle.getEntraceFee()
               interval = await raffle.getInterval()

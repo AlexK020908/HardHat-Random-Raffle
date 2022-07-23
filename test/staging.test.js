@@ -46,7 +46,7 @@ developmentChains.includes(network.name)
                                   winnerBalance.toString(),
                                   winnerStartingBalance.add(entranceFee).toString()
                               )
-                              assert(startingTimeStamp > endingTimeStamp)
+                              expect(endingTimeStamp).to.be.greaterThan(startingTimeStamp)
                               resolve()
                           } catch (error) {
                               console.error(error)
