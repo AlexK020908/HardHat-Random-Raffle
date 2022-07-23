@@ -101,7 +101,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         bool isOpen = s_raffleState == RaffleState.OPEN;
         // block.timeStamp gives the current time, in order to get the time passed
         //we could do something like block.timeStamp - prevTimeStamp(we neeod a variable for this )
-        bool timepassed = ((block.timestamp - s_lastTimeStamp)) > c_interval;
+        bool timepassed = ((block.timestamp - s_lastTimeStamp) > c_interval);
         bool hasplayers = (s_players.length > 0);
         bool hasBalance = address(this).balance > 0;
         upkeepNeeded = isOpen && timepassed && hasplayers && hasBalance;
