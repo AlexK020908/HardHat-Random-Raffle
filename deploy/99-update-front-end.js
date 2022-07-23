@@ -2,8 +2,9 @@ const { ethers, network } = require("hardhat")
 fs = require("fs")
 
 //write a script that is connected to the front end
-const FRONT_END_ADD_FILE = "../next-js-smart-raffle/constants/contractAddresses.json"
-const FRONT_end_ABI_FILE = "../next-js-smart-raffle/constants/abi.json"
+const FRONT_END_ADD_FILE = "../FRONT-END-NEXT-JS-SMART-RAFFLE/constants/contractAddresses.json"
+const FRONT_end_ABI_FILE = "../FRONT-END-NEXT-JS-SMART-RAFFLE/constants/abi.json"
+
 module.exports = async function () {
     if (process.env.UPDATE_FRONT_END) {
         console.log("updating front end ")
@@ -38,4 +39,4 @@ async function updateABI() {
     const raffle = await ethers.getContract("Raffle") //if we didn't specify a signer --> will return the deployer by default --> the first element in the signers array
     fs.writeFileSync(FRONT_end_ABI_FILE, raffle.interface.format(ethers.utils.FormatTypes.json))
 }
-module.exports.tags = ("all", "frontend")
+module.exports.tags = ["all", "frontend"]

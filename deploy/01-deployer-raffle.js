@@ -1,6 +1,7 @@
 const { network, ethers } = require("hardhat")
 const { networkConfig } = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
+
 module.exports = async ({ getNamedAccounts, deployments }) => {
     //getting the deployer, and the deploy function
     let VRFCoordinatorV2
@@ -9,6 +10,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     const chainId = network.config.chainId
     const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("2")
     let subID
+
     if (chainId == 31337) {
         const mockcontract = await ethers.getContract("VRFCoordinatorV2Mock") //or ehters.getContract
         VRFCoordinatorV2 = mockcontract.address
@@ -22,6 +24,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         VRFCoordinatorV2 = networkConfig[chainId]["vrfCoordinator"]
         subID = networkConfig[chainId]["subscriptionID"]
     }
+
     const args = [
         networkConfig[chainId]["entranceFee"],
         VRFCoordinatorV2,
